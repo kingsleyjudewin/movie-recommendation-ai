@@ -13,9 +13,10 @@ dist/
 build/
 
 # --- Models / large data ---
-models/*.pkl
-models/*.bin
-data/*.csv
+# Uncomment below to exclude large files from git:
+# models/*.pkl
+# models/*.bin
+# data/*.csv
 
 # --- Node / Frontend ---
 node_modules/

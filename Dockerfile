@@ -35,12 +35,12 @@ COPY config.py ./
 COPY api/ ./api/
 COPY recommender/ ./recommender/
 
+# Copy data and model files
+COPY data/ ./data/
+COPY models/ ./models/
+
 # Copy pre-built frontend static assets from stage 1
 COPY --from=frontend-build /app/frontend/dist ./frontend/dist
-
-# Data and model files must be provided via volume mount at runtime:
-#   docker run -v /path/to/data:/app/data -v /path/to/models:/app/models ...
-# This keeps the image small and secrets out of the layer cache.
 
 EXPOSE 8000
 
