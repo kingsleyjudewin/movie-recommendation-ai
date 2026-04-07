@@ -8,8 +8,12 @@ echo   CineMind AI — starting dev servers...
 echo  ========================================
 echo.
 
+REM Force HuggingFace to use the locally cached model (no internet needed)
+set HF_HUB_OFFLINE=1
+set TRANSFORMERS_OFFLINE=1
+
 REM Start FastAPI backend in a new window
-start "CineMind Backend" cmd /k "cd /d "%~dp0" && uvicorn api.main:app --reload --port 8000"
+start "CineMind Backend" cmd /k "cd /d "%~dp0" && set HF_HUB_OFFLINE=1 && set TRANSFORMERS_OFFLINE=1 && uvicorn api.main:app --reload --port 8000"
 
 REM Wait a moment for the backend to begin loading
 timeout /t 3 /nobreak >nul
